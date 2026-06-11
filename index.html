@@ -3,13 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=/plan/projectplan.html">
-    <title>Urbanway ERP</title>
+    <title>Urbanway ERP: Project Hub</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            color: #1e3a5f;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 40px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-plan { background-color: #4472c4; }
+        .btn-plan:hover { background-color: #335a9f; }
+        .btn-check { background-color: #2e7d32; }
+        .btn-check:hover { background-color: #1b5e20; }
+    </style>
 </head>
 <body>
-    <p style="font-family: sans-serif; text-align: center; margin-top: 50px;">
-        กำลังนำคุณเข้าสู่หน้าแผนงาน (Project Plan)... <br><br>
-        หากระบบไม่เปลี่ยนหน้าอัตโนมัติ <a href="/plan/projectplan.html">คลิกที่นี่</a>
-    </p>
+
+<div class="container">
+    <h1>Urbanway ERP</h1>
+    <p>Project Hub & Documentation</p>
+    
+    <a href="/plan/projectplan.html" class="btn btn-plan">📊 เปิดดู Project Plan (แผนงาน)</a>
+    <a href="/plan/checklist.html" class="btn btn-check">✅ เปิดดู Setup Checklist (ฟอร์มตั้งค่า)</a>
+</div>
+
 </body>
 </html>
