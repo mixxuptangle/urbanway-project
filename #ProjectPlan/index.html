@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urbanway Workflow Automation: Project Plan</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #f4f7f6; 
+        }
+        h1 { 
+            color: #1e3a5f; 
+            text-align: center; 
+            border-bottom: 3px solid #4472c4; 
+            padding-bottom: 15px; 
+            margin-bottom: 30px;
+        }
+        h2 { color: #1e3a5f; }
+        .tech-stack { 
+            background-color: #fff; 
+            padding: 25px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            margin-bottom: 30px; 
+        }
+        details { 
+            background-color: #fff; 
+            margin-bottom: 15px; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08); 
+            overflow: hidden; 
+        }
+        summary { 
+            font-weight: 600; 
+            padding: 18px 25px; 
+            background-color: #4472c4; 
+            color: #fff; 
+            cursor: pointer; 
+            user-select: none; 
+            font-size: 1.2em; 
+            transition: background-color 0.3s; 
+            display: flex;
+            align-items: center;
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        summary::before {
+            content: "▶";
+            margin-right: 15px;
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+        summary:hover { background-color: #335a9f; }
+        .details-content { 
+            padding: 25px; 
+            border-top: 1px solid #eee; 
+            background-color: #fafbfc;
+        }
+        .section-title { 
+            color: #1e3a5f; 
+            margin-top: 0; 
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+        }
+        .section-title.user-req {
+            color: #d84315;
+            border-bottom: 1px dashed #ffab91;
+        }
+        ul { padding-left: 20px; margin-bottom: 20px; }
+        li { margin-bottom: 8px; }
+        .tag { 
+            display: inline-block; 
+            padding: 4px 10px; 
+            border-radius: 6px; 
+            font-size: 0.85em; 
+            font-weight: 600; 
+            margin-right: 8px; 
+            margin-bottom: 10px;
+        }
+        .tag-be { background-color: #e0f2f1; color: #00695c; border: 1px solid #b2dfdb; }
+        .tag-fe { background-color: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; }
+        .tag-db { background-color: #e8eaf6; color: #283593; border: 1px solid #c5cae9; }
+        .tag-ai { background-color: #f3e5f5; color: #6a1b9a; border: 1px solid #e1bee7; }
+        .feature-box {
+            background-color: #fff3e0;
+            padding: 15px;
+            border-left: 4px solid #ff9800;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Urbanway Workflow Automation: Project Plan</h1>
+
+    <div class="tech-stack">
+        <h2>🛠️ System Architecture & Technology Stack</h2>
+        
+        <h3 class="section-title" style="border-bottom: none; margin-bottom: 5px;">Core Technologies</h3>
+        <ul>
+            <li><strong><span class="tag tag-fe">Frontend</span> Next.js (React):</strong> ใช้สร้าง UI ที่สวยงาม ทันสมัย แบบ Dashboard & Kanban Board</li>
+            <li><strong><span class="tag tag-be">Backend (Core API)</span> Golang (Go):</strong> เหมาะสำหรับทำ Webhook รับข้อมูล จัดการ State ของ Workflow และทำ API ประสิทธิภาพสูง</li>
+            <li><strong><span class="tag tag-ai">Backend (AI Microservice)</span> Python:</strong> เพื่อคุยกับ LLM (NLP Chatbot), ทำ RAG, จัดการ OCR สลิปโอนเงิน และวิเคราะห์ภาพถ่าย</li>
+            <li><strong><span class="tag tag-db">Database</span> PostgreSQL:</strong> สำหรับเก็บข้อมูลโครงสร้างทั้งหมด (Core Data เช่น Leads, Quotation, Users, Tickets)</li>
+        </ul>
+
+        <h3 class="section-title" style="border-bottom: none; margin-bottom: 5px; margin-top: 20px;">Infrastructure & Integrations</h3>
+        <ul>
+            <li><strong><span class="tag" style="background-color: #fce4ec; color: #c2185b; border: 1px solid #f8bbd0;">Cache & Queue</span> Redis / RabbitMQ:</strong> ทำ Cache ลดภาระ Database และรับ Message Queue ป้องกันระบบล่มจาก Webhook ที่เข้ามาพร้อมกันจำนวนมาก</li>
+            <li><strong><span class="tag" style="background-color: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2;">File Storage</span> AWS S3 หรือ GCS:</strong> แยกเก็บไฟล์หนักๆ เช่น สลิปโอนเงิน รูปถ่ายหน้างาน ไฟล์แบบ 2D/3D และเอกสารสัญญา PDF โดยเฉพาะ</li>
+            <li><strong><span class="tag" style="background-color: #fff8e1; color: #f57f17; border: 1px solid #ffecb3;">Real-time</span> WebSockets:</strong> สร้างบน Golang เพื่อดันแจ้งเตือน (Push Notification) ไปยังหน้าจอ Dashboard ของผู้ใช้งานแบบเรียลไทม์</li>
+            <li><strong><span class="tag" style="background-color: #f3e5f5; color: #4a148c; border: 1px solid #e1bee7;">Integrations</span> APIs:</strong> เชื่อมต่อ PEAK Accounting API, LINE Messaging API, Facebook Graph API, Google Ads API</li>
+        </ul>
+    </div>
+
+    <!-- Phase 1 -->
+    <details>
+        <summary>Phase 1: Core Foundation & Lead Management (ระบบการตลาดและ CRM พื้นฐาน)</summary>
+        <div class="details-content">
+            <h3 class="section-title user-req">💡 User Requirements & Features (มุมมองผู้ใช้งาน)</h3>
+            <div class="feature-box">
+                <strong>การใช้งานหลัก:</strong>
+                <ul>
+                    <li><strong>รวมแชทไว้ที่เดียว:</strong> เซลส์และแอดมินไม่ต้องสลับเปิดแอป LINE หรือ Facebook ระบบจะดึงแชทลูกค้าทั้งหมดมาอยู่ในหน้าจอเดียว (Unified Inbox)</li>
+                    <li><strong>AI Chatbot ตอบแชท 24 ชม.:</strong> ดึงฟีเจอร์ AI NLP เข้ามาช่วยคุยและตอบคำถามลูกค้าแทน Admin 100% ทันทีที่ลูกค้าทักมา (เริ่มทำตั้งแต่ Phase 1)</li>
+                    <li><strong>ไม่พลาดทุก Lead:</strong> ลูกค้าทักปุ๊บ ระบบบันทึกข้อมูลเข้าตารางให้อัตโนมัติ และสุ่มแจกคิวให้เซลส์ดูแลทันที</li>
+                    <li><strong>AI ผู้ช่วยนักการตลาด:</strong> พิมพ์บอกสั้นๆ AI จะช่วยคิดแคปชั่นโฆษณาและสรุปผลยิงแอดให้ว่าแคมเปญไหนคุ้ม/ไม่คุ้ม</li>
+                    <li><strong>ผู้ใช้งานที่เกี่ยวข้อง:</strong> Sales Admin, Marketing, Sales Manager</li>
+                </ul>
+            </div>
+            
+            <h3 class="section-title">⚙️ Technical Details</h3>
+            <ul>
+                <li><strong>Database Design (PostgreSQL):</strong> Schema สำหรับ <code>users</code> (ระบบ Role/Permission), <code>leads</code>, <code>interactions</code> (ประวัติการคุย), และ <code>audit_logs</code></li>
+                <li><strong>Backend (Golang):</strong>
+                    <ul>
+                        <li>ระบบ Webhook รับข้อความจาก LINE OA และ Facebook Messenger</li>
+                        <li>ระบบ Auto-Capture Lead เพื่อดึงข้อมูลลูกค้าและขอ PDPA Consent</li>
+                        <li>ระบบ Round-Robin Assignment เพื่อแจก Lead ให้ Sales อย่างเป็นธรรม</li>
+                    </ul>
+                </li>
+                <li><strong>AI Integration (Python):</strong> <strong>AI Chatbot (NLP)</strong> สำหรับตอบคำถามลูกค้า 100%, และระบบ RAG สำหรับ Gen Content โฆษณา/วิเคราะห์ Ads</li>
+                <li><strong>Frontend (Next.js):</strong>
+                    <ul>
+                        <li>หน้า Authentication & Role Management</li>
+                        <li>Dashboard & Kanban Board สำหรับดูสถานะ Leads</li>
+                        <li>Unified Inbox UI สำหรับ Sales Admin ตอบแชทจากระบบเดียว</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- Phase 2 -->
+    <details>
+        <summary>Phase 2: AI Sales Copilot & Quotation (ระบบขายและออกเอกสาร)</summary>
+        <div class="details-content">
+            <h3 class="section-title user-req">💡 User Requirements & Features (มุมมองผู้ใช้งาน)</h3>
+            <div class="feature-box">
+                <strong>การใช้งานหลัก:</strong>
+                <ul>
+                    <li><strong>ออกใบเสนอราคาด่วน:</strong> เซลส์กรอกข้อมูลพื้นฐาน AI ช่วยร่างแผนธุรกิจสวยงามและออกใบเสนอราคา PDF ให้อัตโนมัติ ส่งให้ลูกค้าได้ทันที</li>
+                    <li><strong>ลิงก์ชำระเงินและตรวจสลิปฉลาด:</strong> ส่งลิงก์ให้ลูกค้าแนบสลิป AI จะช่วยตรวจสอบว่าสลิปจริงหรือปลอม ยอดตรงหรือไม่ ลดภาระบัญชี</li>
+                    <li><strong>อนุมัติง่ายผ่านมือถือ:</strong> ผู้บริหารกดคลิกอนุมัติตามลำดับอำนาจอนุมัติ (Delegation of Authority - DOA) ได้จากที่ไหนก็ได้</li>
+                    <li><strong>เซ็นสัญญากระดาษเป็นศูนย์:</strong> ลูกค้าสามารถเซ็นสัญญาเปิดแฟรนไชส์บนออนไลน์ (E-Signature) ได้แบบถูกกฎหมาย</li>
+                    <li><strong>ผู้ใช้งานที่เกี่ยวข้อง:</strong> Sales, Executive (ผู้อนุมัติ), Customer, Accounting</li>
+                </ul>
+            </div>
+
+            <h3 class="section-title">⚙️ Technical Details</h3>
+            <ul>
+                <li><strong>Database Design (PostgreSQL):</strong> Schema สำหรับ <code>quotations</code>, <code>business_plans</code>, <code>payments</code> และระบบ <strong>DOA Matrix</strong> (<code>doa_modules</code>, <code>doa_conditions</code>, <code>doa_roles</code>, <code>doa_matrix_rules</code>, <code>doa_approval_logs</code>) เพื่อความยืดหยุ่น</li>
+                <li><strong>Backend (Golang):</strong>
+                    <ul>
+                        <li>ระบบ Document Generation (PDF) สำหรับใบเสนอราคาและแผนธุรกิจ</li>
+                        <li>ระบบ Approval Workflow ตามลำดับขั้น Delegation of Authority (DOA) โดยใช้โครงสร้างแบบ Matrix ที่ตั้งค่าปรับเปลี่ยนได้ง่าย</li>
+                        <li>PEAK Integration (Core Phase 2-6): ยิง API ไป PEAK ใน <strong>ทุกๆ ครั้งที่มีการบันทึกเอกสารทางการเงิน</strong> (ไม่จำกัดแค่มัดจำ แต่รวมถึงการตั้งเบิกช่าง, สลิปงวดอื่นๆ)</li>
+                        <li>ระบบ E-Signature สำหรับเซ็นสัญญา</li>
+                    </ul>
+                </li>
+                <li><strong>AI Integration (Python):</strong> ตรวจสอบสลิปโอนเงินอัตโนมัติ (Slip Verification + QR)</li>
+                <li><strong>Frontend (Next.js):</strong>
+                    <ul>
+                        <li>หน้า Quotation Builder ให้ Sales กรอกข้อมูล</li>
+                        <li>หน้า Payment Gateway/Link สำหรับอัปโหลดสลิป</li>
+                        <li>หน้าจอสำหรับผู้บริหารกด Approve ตาม DOA และหน้าตารางตั้งค่า DOA Matrix สำหรับ Admin</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- Phase 3 -->
+    <details>
+        <summary>Phase 3: Project Preparation & Design (เตรียมโครงการและประเมินงบ)</summary>
+        <div class="details-content">
+            <h3 class="section-title user-req">💡 User Requirements & Features (มุมมองผู้ใช้งาน)</h3>
+            <div class="feature-box">
+                <strong>การใช้งานหลัก:</strong>
+                <ul>
+                    <li><strong>โฟร์แมนทำงานผ่านมือถือ:</strong> ช่างสำรวจหน้างานไม่ต้องจดกระดาษ ถ่ายรูปและติ๊ก Checklist ผ่านฟอร์มบนมือถือ ข้อมูลวิ่งเข้าส่วนกลางแบบเรียลไทม์</li>
+                    <li><strong>ช่วยทำแบบและถอดงบ:</strong> นำข้อมูลสำรวจมาให้ AI ช่วยสร้างแบบ 2D/3D และระบบจะตีราคาเป็น BOQ สรุปต้นทุนก่อสร้างให้ทันที ป้องกันงบบานปลาย (คุมไม่ให้เกิน 60%)</li>
+                    <li><strong>เช็คสต๊อกอัตโนมัติ:</strong> ฝ่ายสโตร์รู้ทันทีว่ามีของพอไหม ระบบสร้างใบสั่งซื้อ (PR) ให้เองหากของขาด</li>
+                    <li><strong>ผู้ใช้งานที่เกี่ยวข้อง:</strong> Foreman (ช่างสำรวจ), Draftsman, Operations Manager, Store</li>
+                </ul>
+            </div>
+
+            <h3 class="section-title">⚙️ Technical Details</h3>
+            <ul>
+                <li><strong>Database Design (PostgreSQL):</strong> Schema สำหรับ <code>site_surveys</code>, <code>designs</code>, <code>boq</code>, <code>purchase_requests</code></li>
+                <li><strong>Backend (Golang):</strong>
+                    <ul>
+                        <li>ระบบรับข้อมูล Checklist สำรวจพื้นที่จากโฟร์แมน</li>
+                        <li>BOQ Engine: คำนวณราคาวัสดุอ้างอิง Master Price List คุม Budget < 60%</li>
+                        <li>ระบบตรวจสอบ Sales Order (SO) กับสต๊อก เพื่อเปิด Purchase Request (PR)</li>
+                    </ul>
+                </li>
+                <li><strong>Frontend (Next.js):</strong>
+                    <ul>
+                        <li>Mobile-friendly Form สำหรับโฟร์แมนกรอกข้อมูลและอัปโหลดรูป</li>
+                        <li>หน้าจอ 2D/3D Design Review สำหรับลูกค้าอนุมัติแบบ</li>
+                        <li>หน้าจัดการ BOQ สำหรับทีม Operations</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- Phase 4 -->
+    <details>
+        <summary>Phase 4: Installation & Contractor Management (งานติดตั้งและผู้รับเหมา)</summary>
+        <div class="details-content">
+            <h3 class="section-title user-req">💡 User Requirements & Features (มุมมองผู้ใช้งาน)</h3>
+            <div class="feature-box">
+                <strong>การใช้งานหลัก:</strong>
+                <ul>
+                    <li><strong>คุมผู้รับเหมาผ่าน LINE:</strong> ผู้รับเหมาไม่ต้องโหลดแอปเพิ่ม รับงาน ถ่ายรูปอัปเดตหน้างาน และกดขอเบิกเงินงวดผ่าน LINE OA ของตัวเองได้เลย</li>
+                    <li><strong>AI ช่วยตรวจงาน:</strong> ผู้รับเหมาส่งรูปมา AI ช่วยเทียบรูปหน้างานจริงกับแบบ 2D เบื้องต้นว่าจุดสำคัญครบไหม ช่วยลดภาระหัวหน้าช่าง</li>
+                    <li><strong>คุมเวลาเป๊ะ (SLA):</strong> หน้าจอ Gantt Chart สีสันสดใส แจ้งเตือนสีแดงทันทีหากทีมไหนติดตั้งล่าช้ากว่ากำหนด 15 วัน</li>
+                    <li><strong>ผู้ใช้งานที่เกี่ยวข้อง:</strong> Contractor (ผรม.), Install Head, Operations Admin</li>
+                </ul>
+            </div>
+
+            <h3 class="section-title">⚙️ Technical Details</h3>
+            <ul>
+                <li><strong>Database Design (PostgreSQL):</strong> Schema สำหรับ <code>installations</code>, <code>contractors</code>, <code>inspections</code></li>
+                <li><strong>Backend (Golang):</strong>
+                    <ul>
+                        <li>SLA Tracking Engine: ติดตามเวลาการติดตั้งและแจ้งเตือน</li>
+                        <li>ระบบเชื่อมต่อ LINE OA ผู้รับเหมา ส่งใบสั่งงาน รับงาน และขอเบิกเงิน (ยิง API ไป PEAK เพื่อตั้งจ่ายอัตโนมัติ)</li>
+                    </ul>
+                </li>
+                <li><strong>AI Integration (Python):</strong> AI ช่วยตรวจสอบภาพถ่าย/วิดีโอจากผู้รับเหมาเปรียบเทียบกับแบบ 2D เบื้องต้น</li>
+                <li><strong>Frontend (Next.js):</strong>
+                    <ul>
+                        <li>Installation Gantt Chart / Calendar Dashboard</li>
+                        <li>Quality Assurance (QA) Panel สำหรับตรวจรับงาน</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- Phase 5 -->
+    <details>
+        <summary>Phase 5: Logistics & Handover (การจัดส่งและส่งมอบ)</summary>
+        <div class="details-content">
+            <h3 class="section-title user-req">💡 User Requirements & Features (มุมมองผู้ใช้งาน)</h3>
+            <div class="feature-box">
+                <strong>การใช้งานหลัก:</strong>
+                <ul>
+                    <li><strong>เซ็นรับร้านบนมือถือ:</strong> ถึงวันส่งมอบ ลูกค้าดูความเรียบร้อยและเซ็นชื่อรับมอบร้านผ่านมือถือ/แท็บเล็ตได้ทันที</li>
+                    <li><strong>จ่ายครบ ปลดล็อกแอป:</strong> ทันทีที่ลูกค้าจ่ายเงินงวดสุดท้าย (10%) ระบบจะปลดล็อกสิทธิ์เข้าถึงแอปจัดการร้านแฟรนไชส์ให้อัตโนมัติ ใช้งานได้ทันที</li>
+                    <li><strong>หารถส่งของง่ายขึ้น:</strong> ระบบคำนวณและเลือกขนส่งที่คุ้มค่าที่สุด พร้อมแจ้งคิวจัดส่งให้ลูกค้าทราบล่วงหน้า</li>
+                    <li><strong>ผู้ใช้งานที่เกี่ยวข้อง:</strong> Customer, Store, Logistics Provider</li>
+                </ul>
+            </div>
+
+            <h3 class="section-title">⚙️ Technical Details</h3>
+            <ul>
+                <li><strong>Database Design (PostgreSQL):</strong> Schema สำหรับ <code>shipments</code>, <code>handovers</code></li>
+                <li><strong>Backend (Golang):</strong>
+                    <ul>
+                        <li>ระบบคำนวณและเสนอราคาบริษัทขนส่ง</li>
+                        <li>ระบบสร้างเอกสาร Pick/Ship และ Handover Document</li>
+                        <li>Webhook แจ้งเตือนลูกค้าเซ็นรับมอบ, ยิง API ไป PEAK บันทึกเงินงวดสุดท้าย และปลดล็อก App สาขา</li>
+                    </ul>
+                </li>
+                <li><strong>Frontend (Next.js):</strong>
+                    <ul>
+                        <li>Logistics Tracking Board</li>
+                        <li>หน้าจอ Customer Sign-off สำหรับเซ็นรับมอบ (Tablet/Mobile)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- Phase 6 -->
+    <details>
+        <summary>Phase 6: After-Sales & Maintenance (บริการหลังการขายและซ่อมบำรุง)</summary>
+        <div class="details-content">
+            <h3 class="section-title user-req">💡 User Requirements & Features (มุมมองผู้ใช้งาน)</h3>
+            <div class="feature-box">
+                <strong>การใช้งานหลัก:</strong>
+                <ul>
+                    <li><strong>ซ่อมไวภายใน 48 ชม.:</strong> หากลูกค้าแจ้งปัญหา (ผ่าน AI Chatbot ที่ทำไว้ใน Phase 1) ระบบจะวิเคราะห์อาการเสียและเปิด Ticket จองคิวช่างให้อัตโนมัติ พร้อมตั้งเวลาเตือนหากช่างปิดงานช้ากว่า 48 ชั่วโมง</li>
+                    <li><strong>วิเคราะห์ยอดขายร้าน:</strong> หน้าจอพิเศษ (Dashboard) ช่วยประเมินยอดขายของแต่ละสาขาว่าตกเกณฑ์ไหม และแนะนำโปรโมชั่นกระตุ้นยอดให้เจ้าของสาขา</li>
+                    <li><strong>ผู้ใช้งานที่เกี่ยวข้อง:</strong> Franchisee (ลูกค้า), Customer Service, Repair Technician (ช่างซ่อม)</li>
+                </ul>
+            </div>
+
+            <h3 class="section-title">⚙️ Technical Details</h3>
+            <ul>
+                <li><strong>Database Design (PostgreSQL):</strong> Schema สำหรับ <code>tickets</code>, <code>maintenance_jobs</code>, <code>branch_performance</code></li>
+                <li><strong>Backend (Golang):</strong>
+                    <ul>
+                        <li>ระบบ Ticket Auto-Creation แจ้งงานซ่อม</li>
+                        <li>Dispatch Engine: จัดคิวช่างและติดตามการซ่อม (SLA 48 ชม.)</li>
+                        <li>Performance Analytics: ประมวลผลยอดขายเพื่อแนะนำโปรโมชั่น</li>
+                    </ul>
+                </li>
+                <li><strong>PEAK Integration:</strong> เชื่อมต่อ PEAK อัตโนมัติเพื่อตั้งเบิกจ่ายค่าแรงช่างซ่อมบำรุง</li>
+                <li><strong>Frontend (Next.js):</strong>
+                    <ul>
+                        <li>Helpdesk / Ticketing Dashboard</li>
+                        <li>Branch Analytics Dashboard แสดง Performance ยอดขายเทียบเป้าหมาย</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+</body>
+</html>
